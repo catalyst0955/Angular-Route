@@ -14,6 +14,11 @@ import {ServerComponent} from './servers/server/server.component';
 import {ServersService} from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AppRoutingModule} from './app-routing.module';
+import {AuthGuardService} from './auth-guard.service';
+import {AuthService} from './auth-service';
+import {CanDeactivatedGuard} from './servers/edit-server/can-deactivated-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import {ServerResolver} from './servers/server/server-resolver.service';
 
 
 
@@ -26,7 +31,8 @@ import {AppRoutingModule} from './app-routing.module';
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,7 @@ import {AppRoutingModule} from './app-routing.module';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthGuardService, AuthService, CanDeactivatedGuard, ServerResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {
